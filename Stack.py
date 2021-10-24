@@ -39,7 +39,7 @@ class Stack(DoublyLinkedList):
 			
 		self.__size += 1
 
-	def pop(self) -> DoublyLinkedList or None:
+	def pop(self) -> DoublyLinkedList | None:
 		'''
 		Removes the element at the top of the stack.
 

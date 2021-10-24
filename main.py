@@ -50,8 +50,8 @@ def cardGame() -> None:
 
 	print("Enter a card and ensure that there are no repeat cards in the deck of 52. Each player is allowed to remove only the top card once per round. At the end of the round the player who goes next will now go last. At the end of each round the deck resets, so there are 52 available cards to choose from at the start of each round")
 
-	while((players < 2) or (players > 52)):
-		print("The game must have more than 1 player, but less than 52.")
+	while((players < 2) or (players > 53)):
+		print("The game must have more than 1 player, but less than 53.")
 		try:
 			players = int(input("Enter number of players: "))
 		except:

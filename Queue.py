@@ -105,7 +105,7 @@ class Queue(DoublyLinkedList):
 			self.__enqueue(self.__queue)
 			self.__queue = self.__queue.getNext
 
-	def contains(self, element) -> bool:
+	def contains(self, element) -> None:
 		pass
 
 	def isEmpty(self) -> bool:
