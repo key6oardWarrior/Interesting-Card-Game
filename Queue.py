@@ -12,7 +12,7 @@ class Queue(DoublyLinkedList):
 			self.__last = element
 			self.__size = 1
 
-	def peak(self) -> DoublyLinkedList | None:
+	def peak(self):
 		'''
 		# Returns:
 		The top of the Queue
