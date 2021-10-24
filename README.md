@@ -2,7 +2,7 @@
  <html>
   <body>
 
-<h1>Stacks-and-Queues-Card-Game</h1>
+<h1>Interesting Card Game</h1>
 <h2>Rules</h2>
 <ol>
 	<li>You have a standard deck of cards.</li>
