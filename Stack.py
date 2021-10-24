@@ -77,7 +77,7 @@ class Stack(DoublyLinkedList):
 		True if element is in the Stack else False
 		'''
 		if self.__size > 0:
-			PRIMITIVES = (int, bool, float, complex, bytes, memoryview)
+			PRIMITIVES = (int, bool, float, complex)
 			current = self.__first
 
 			if isinstance(element, PRIMITIVES):
