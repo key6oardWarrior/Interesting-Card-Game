@@ -5,7 +5,7 @@
 <h1>Interesting Card Game</h1>
 <h2>Rules</h2>
 <ol>
-	<li>You have a standard deck of cards.</li>
+	<li>You have a standard deck of 52 cards. AKA card 2 - 10 and Ace - King.</li>
 	<li>You have at least 2 players, but no more than 53 players.</li>
 	<li>You win the game by being the only player not eliminated.</li>
 	<li>Each player has a number. At the start of round 1 player 1 goes first and so on.</li>
