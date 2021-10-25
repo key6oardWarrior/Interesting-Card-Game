@@ -2,7 +2,10 @@ from Card import Card
 from Stack import Stack
 from Queue import Queue
 
-def switch(cardValue: str) -> bool:
+def isLegal(cardValue: str) -> bool:
+	'''
+	Check if card value is legal
+	'''
 	if cardValue == "ace":
 		return True
 	if cardValue == "king":
@@ -12,10 +15,7 @@ def switch(cardValue: str) -> bool:
 	if cardValue == "jack":
 		return True
 	
-	if((cardValue.isnumeric()) and (int(cardValue) in range(2, 11))):
-		return True
-
-	return False
+	return ((cardValue.isnumeric()) and (int(cardValue) in range(2, 11)))
 
 def getPlayerKey(order) -> int:
 	return list(order.peak().keys())[0]
@@ -89,7 +89,7 @@ def cardGame() -> None:
 
 		cardValue = input(f"Player {playerKey} enter the card's value (2 - 10 or Ace - King): ").lower().strip()
 
-		if switch(cardValue) == False:
+		if isLegal(cardValue) == False:
 			eliminatePlayer(deck, order, playerKey)
 			continue
 	
