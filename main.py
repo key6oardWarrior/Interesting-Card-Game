@@ -5,6 +5,9 @@ from Queue import Queue
 def isLegal(cardValue: str) -> bool:
 	'''
 	Check if card value is legal
+
+	# Returns:
+	True if the cardValue is in a standard deck of card else False
 	'''
 	if cardValue == "ace":
 		return True
