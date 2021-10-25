@@ -44,8 +44,7 @@ class Queue(DoublyLinkedList):
 		Place an element to the back of the Queue.
 
 		# Params:
-		element - The element to be placed in a container. The container will be placed
-		at the back of the Queue.
+		element - The container will be placed at the back of the Queue.
 		'''
 		self.__last.append = element
 		self.__last = self.__last.getNext
