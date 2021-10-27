@@ -1,8 +1,9 @@
 from Card import Card
 from Stack import Stack
 from Queue import Queue
+from Player import Player
 
-def isLegal(cardValue: str) -> bool:
+def isValueLegal(cardValue: str | int) -> bool:
 	'''
 	Check if card value is legal
 
@@ -20,8 +21,23 @@ def isLegal(cardValue: str) -> bool:
 	
 	return ((cardValue.isnumeric()) and (int(cardValue) in range(2, 11)))
 
-def getPlayerKey(order) -> int:
-	return list(order.peak().keys())[0]
+def isSuitLegal(suit: str) -> bool:
+	if suit == "hearts":
+		return True
+
+	if suit == "spades":
+		return True
+
+	if suit == "clubs":
+		return True
+
+	if suit == "diamonds":
+		return True
+
+	return False
+
+def getPlayerNum(order) -> int:
+	return order.peak().player
 
 def eliminatePlayer(deck: Stack, order: Queue, playerKey: int) -> None:
 	print(f"Player {playerKey} you lose. Next round.")
@@ -29,15 +45,12 @@ def eliminatePlayer(deck: Stack, order: Queue, playerKey: int) -> None:
 	order.moveBack()
 	deck.clear()
 
+	for ii in range(order.size):
+		order.peak().setRemove = False
+		order.moveBack()
+
 def cardGame() -> None:
 	deck = Stack()
-	cards = {
-		"hearts": [],
-		"spades": [],
-		"clubs": [],
-		"diamonds": []
-	}
-	KEYS = list(cards.keys())
 	players = 0
 
 	print("Enter a card and ensure that there are no repeat cards in the deck of 52. Each player is allowed to remove only the top card once per round. At the end of the round the player who goes next will now go last. At the end of each round the deck resets, so there are 52 available cards to choose from at the start of each round")
@@ -51,37 +64,33 @@ def cardGame() -> None:
 
 	order = Queue()
 	for ii in range(1, players+1):
-		order.enqueue({ii: 1})
+		order.enqueue(Player(ii))
 	
 	del players
+	playerKey = getPlayerNum(order)
 
-	while True:
-		playerKey = getPlayerKey(order)
-		if order.size < 2:
-			print(f"Player {playerKey} won")
-			break
-		cardSuit = input(f"Player {playerKey} enter the card's suit {KEYS} or enter \"remove\": ").lower().strip()
+	while order.size > 1:
+		playerKey = getPlayerNum(order)
+		cardSuit = input(f"Player {playerKey} enter the card's suit (i.e hearts, spades, clubs, or diamonds) or enter \"remove\": ").lower().strip()
 
 		if cardSuit == "remove":
-			if order.peak()[playerKey] == 1:
+			if order.peak().usedRemove == False:
 				deck.pop()
-				order.peak()[playerKey] = 0
+				order.peak().setRemove = True
 				order.moveBack()
 				continue
 
 			else:
-				print(f"Player {playerKey} you lose. Next round")
-				order.dequeue()
-				order.moveBack()
+				eliminatePlayer(deck, order, playerKey)
 				continue
 
-		elif (cardSuit in KEYS) == False:
+		elif isSuitLegal(cardSuit) == False:
 			eliminatePlayer(deck, order, playerKey)
 			continue 
 
 		cardValue = input(f"Player {playerKey} enter the card's value (2 - 10 or Ace - King): ").lower().strip()
 
-		if isLegal(cardValue) == False:
+		if isValueLegal(cardValue) == False:
 			eliminatePlayer(deck, order, playerKey)
 			continue
 	
@@ -96,7 +105,7 @@ def cardGame() -> None:
 		if deck.size >= 52:
 			if order.size > 2:
 				order.moveBack()
-				playerKey = getPlayerKey(order)
+				playerKey = getPlayerNum(order)
 				order.dequeue()
 
 				print(f"Player {playerKey} You lose. Next round")
@@ -106,6 +115,7 @@ def cardGame() -> None:
 				break
 
 		order.moveBack()
+	print(f"Player {getPlayerNum(order)} won")
 
 if __name__ == "__main__":
 	cardGame()
