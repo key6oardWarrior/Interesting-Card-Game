@@ -94,7 +94,7 @@ def cardGame() -> None:
 			eliminatePlayer(deck, order, playerKey)
 			continue
 	
-		card = Card((cardSuit, cardValue))
+		card = Card(cardSuit, cardValue)
 
 		if deck.contains(card):
 			eliminatePlayer(deck, order, playerKey)
