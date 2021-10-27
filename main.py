@@ -28,17 +28,6 @@ def eliminatePlayer(deck: Stack, order: Queue, playerKey: int) -> None:
 	order.dequeue()
 	order.moveBack()
 	deck.clear()
-	players = []
-	while order.size != 0:
-		players.append(order.peak())
-		order.dequeue()
-	
-	for ii in range(len(players)):
-		KEY = list(players[ii].keys())[0]
-		players[ii][KEY] = 1
-
-	for ii in players:
-		order.enqueue(ii)
 
 def cardGame() -> None:
 	deck = Stack()
