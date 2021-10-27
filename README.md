@@ -3,6 +3,7 @@
   <body>
 
 <h1>Interesting Card Game</h1>
+<p><u>Note:</u> The code's in line doc is written in Python 3.10, so it may not be compatible with older versions of Python. For example, <code>def foo(self) -> List | None:</code>. In this example the "|" character is not supported by older version of Python.</p>
 <h2>Rules</h2>
 <ol>
 	<li>You have a standard deck of 52 cards. AKA cards 2 - 10 and Ace - King.</li>
