@@ -39,8 +39,8 @@ def isSuitLegal(suit: str) -> bool:
 def getPlayerNum(order) -> int:
 	return order.peak().player
 
-def eliminatePlayer(deck: Stack, order: Queue, playerKey: int) -> None:
-	print(f"Player {playerKey} you lose. Next round.")
+def eliminatePlayer(deck: Stack, order: Queue, playerNum: int) -> None:
+	print(f"Player {playerNum} you lose. Next round.")
 	order.dequeue()
 	order.moveBack()
 	deck.clear()
@@ -67,11 +67,11 @@ def cardGame() -> None:
 		order.enqueue(Player(ii))
 	
 	del players
-	playerKey = getPlayerNum(order)
+	playerNum = getPlayerNum(order)
 
 	while order.size > 1:
-		playerKey = getPlayerNum(order)
-		cardSuit = input(f"Player {playerKey} enter the card's suit (i.e hearts, spades, clubs, or diamonds) or enter \"remove\": ").lower().strip()
+		playerNum = getPlayerNum(order)
+		cardSuit = input(f"Player {playerNum} enter the card's suit (i.e hearts, spades, clubs, or diamonds) or enter \"remove\": ").lower().strip()
 
 		if cardSuit == "remove":
 			if order.peak().usedRemove == False:
@@ -81,23 +81,23 @@ def cardGame() -> None:
 				continue
 
 			else:
-				eliminatePlayer(deck, order, playerKey)
+				eliminatePlayer(deck, order, playerNum)
 				continue
 
 		elif isSuitLegal(cardSuit) == False:
-			eliminatePlayer(deck, order, playerKey)
+			eliminatePlayer(deck, order, playerNum)
 			continue 
 
-		cardValue = input(f"Player {playerKey} enter the card's value (2 - 10 or Ace - King): ").lower().strip()
+		cardValue = input(f"Player {playerNum} enter the card's value (2 - 10 or Ace - King): ").lower().strip()
 
 		if isValueLegal(cardValue) == False:
-			eliminatePlayer(deck, order, playerKey)
+			eliminatePlayer(deck, order, playerNum)
 			continue
 	
 		card = Card(cardSuit, cardValue)
 
 		if deck.contains(card):
-			eliminatePlayer(deck, order, playerKey)
+			eliminatePlayer(deck, order, playerNum)
 			continue
 
 		deck.push(card)
@@ -105,13 +105,13 @@ def cardGame() -> None:
 		if deck.size >= 52:
 			if order.size > 2:
 				order.moveBack()
-				playerKey = getPlayerNum(order)
+				playerNum = getPlayerNum(order)
 				order.dequeue()
 
-				print(f"Player {playerKey} You lose. Next round")
+				print(f"Player {playerNum} You lose. Next round")
 				deck.clear()
 			else:
-				print(f"Player {playerKey} won")
+				print(f"Player {playerNum} won")
 				break
 
 		order.moveBack()
