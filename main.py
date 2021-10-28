@@ -60,7 +60,7 @@ def cardGame() -> None:
 		try:
 			players = int(input("Enter number of players: "))
 		except:
-			print("Only enter numbers that are > 1")
+			print("Only enter numbers that are > 1, but < 54")
 
 	order = Queue()
 	for ii in range(1, players+1):
