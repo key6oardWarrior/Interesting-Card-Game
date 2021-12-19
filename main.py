@@ -2,6 +2,8 @@ from Card import Card
 from Stack import Stack
 from Queue import Queue
 from Player import Player
+from os import system
+from time import sleep
 
 def isValueLegal(cardValue: str | int) -> bool:
 	'''
@@ -115,6 +117,8 @@ def cardGame() -> None:
 				break
 
 		order.moveBack()
+		sleep(.5)
+		system("clear")
 	print(f"Player {getPlayerNum(order)} won")
 
 if __name__ == "__main__":
