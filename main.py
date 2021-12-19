@@ -117,7 +117,7 @@ def cardGame() -> None:
 				break
 
 		order.moveBack()
-		sleep(.5)
+		sleep(1.0)
 		system("clear")
 	print(f"Player {getPlayerNum(order)} won")
 
