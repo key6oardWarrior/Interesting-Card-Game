@@ -16,6 +16,7 @@
 	<li>If a player calls a card that does not exist in the standard deck they are eliminated.</li>
 	<li>At the start of each round the deck resets, so there are 52 callable cards at the start of each round.</li>
 	<li>At the end of each round a player WILL be eliminated (see rules 5 - 8). After a player is eliminated the player who is susposed to go next will go last. For example, if there are 5 players and player 2 is eliminated, then player 3 will go last and player 4 will go next, so the order at the start of the next round will be 4, 5, 3, 1.</li>
+	<li>After a player calls a card everyone has 0.5 seconds to view the card that the player just called.</li>
 </ol>
 
  </body>
