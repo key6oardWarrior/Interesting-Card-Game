@@ -19,5 +19,10 @@
 	<li>After a player calls a card everyone has 1 second to view the card that the player just called.</li>
 </ol>
 
+<h2>Requirements</h2>
+<ol>
+	<li>Python 3.10 or greater</li>
+</ol>
+
  </body>
 </html>
